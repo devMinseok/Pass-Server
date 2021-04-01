@@ -11,10 +11,13 @@ class CreateUser: Migration {
     func prepare(on database: Database) -> EventLoopFuture<Void> {
         database.schema("users")
             .id()
-            .field("name", .string)
-            .field("birth_date", .string)
-            .field("phone", .string)
-            .field("email", .string)
+            .field("username", .string, .required)
+            .field("password_hash", .string, .required)
+            .field("birth_date", .string, .required)
+            .field("phone", .string, .required)
+            .field("email", .string, .required)
+            .field("created_at", .datetime, .required)
+            .field("updated_at", .datetime, .required)
             .create()
     }
     
