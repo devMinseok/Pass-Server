@@ -62,13 +62,13 @@ services:
     deploy:
       replicas: 0
   db:
-    image: mysql:8.0
+    image: postgres:12-alpine
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data:/var/lib/postgresql/data/pgdata
     environment:
-      MYSQL_USER: vapor_username
-      MYSQL_PASSWORD: vapor_password
-      MYSQL_DATABASE: vapor_database
-      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_USER: vapor_username
+      POSTGRES_PASSWORD: vapor_password
+      POSTGRES_DB: vapor_database
     ports:
-      - '3306:3306'
+      - '5432:5432'

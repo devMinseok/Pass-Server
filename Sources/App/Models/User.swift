@@ -2,13 +2,12 @@
 //  User.swift
 //  
 //
-//  Created by 강민석 on 2021/03/24.
+//  Created by 강민석 on 2021/03/31.
 //
 
+import Fluent
 import Vapor
-import FluentMySQLDriver
 
-/// User(사용자) 모델
 final class User: Model {
     static let schema = "users"
     
@@ -32,7 +31,7 @@ final class User: Model {
     @Field(key: "email")
     var email: String
     
-    init() { }
+    init() {}
     
     init(id: UUID? = nil, name: String, birthDate: Date, phone: String, email: String) {
         self.id = id
